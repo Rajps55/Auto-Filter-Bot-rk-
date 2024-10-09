@@ -17,13 +17,13 @@ def is_valid_ip(ip):
     return re.match(ip_pattern, ip) is not None
 
 # Bot information
-API_ID = environ.get('API_ID', '')  #api id of your telegram id
+API_ID = environ.get('API_ID', '27002519')  #api id of your telegram id
 if len(API_ID) == 0:
     print('Error - API_ID is missing, exiting now')
     exit()
 else:
     API_ID = int(API_ID)
-API_HASH = environ.get('API_HASH', '') #api hash of your telegram id
+API_HASH = environ.get('API_HASH', '1033ee721101d78366b4ac46aadf3930') #api hash of your telegram id
 if len(API_HASH) == 0:
     print('Error - API_HASH is missing, exiting now')
     exit()
@@ -37,7 +37,7 @@ PORT = int(environ.get('PORT', '80')) #don't change anything
 PICS = (environ.get('PICS', 'https://telegra.ph/file/58fef5cb458d5b29b0186.jpg https://telegra.ph/file/f0aa4f433132769f8970c.jpg https://telegra.ph/file/f515fbc2084592eca60a5.jpg https://telegra.ph/file/20dbdcffaa89bd3d09a74.jpg https://telegra.ph/file/6045ba953af4def846238.jpg')).split()
 
 # Bot Admins
-ADMINS = environ.get('ADMINS', '') #apni tg id daalo
+ADMINS = environ.get('ADMINS', '6174868004') #apni tg id daalo
 if len(ADMINS) == 0:
     print('Error - ADMINS is missing, exiting now')
     exit()
@@ -45,13 +45,13 @@ else:
     ADMINS = [int(admins) for admins in ADMINS.split()]
 
 # Channels
-INDEX_CHANNELS = [int(index_channels) if index_channels.startswith("-") else index_channels for index_channels in environ.get('INDEX_CHANNELS', '').split()]
+INDEX_CHANNELS = [int(index_channels) if index_channels.startswith("-") else index_channels for index_channels in environ.get('INDEX_CHANNELS', '-1002208295766 -1002233820213 -1002227944470 -1002185234412').split()]
 if len(INDEX_CHANNELS) == 0:
     print('Info - INDEX_CHANNELS is empty')
-AUTH_CHANNEL = [int(auth_channels) for auth_channels in environ.get('AUTH_CHANNEL', '').split()]
+AUTH_CHANNEL = [int(auth_channels) for auth_channels in environ.get('AUTH_CHANNEL', '-1002233212878').split()]
 if len(AUTH_CHANNEL) == 0:
     print('Info - AUTH_CHANNEL is empty')
-LOG_CHANNEL = environ.get('LOG_CHANNEL', '') #bot log channel -1005293546253
+LOG_CHANNEL = environ.get('LOG_CHANNEL', '-1002213457968') #bot log channel -1005293546253
 if len(LOG_CHANNEL) == 0:
     print('Error - LOG_CHANNEL is missing, exiting now')
     exit()
@@ -60,7 +60,7 @@ else:
 IS_FSUB = is_enabled('IS_FSUB', True)
 
 # support group
-SUPPORT_GROUP = environ.get('SUPPORT_GROUP', '') #support group id ex:  -1002936246860
+SUPPORT_GROUP = environ.get('SUPPORT_GROUP', '-1002155777503') #support group id ex:  -1002936246860
 if len(SUPPORT_GROUP) == 0:
     print('Error - SUPPORT_GROUP is missing, exiting now')
     exit()
@@ -68,7 +68,7 @@ else:
     SUPPORT_GROUP = int(SUPPORT_GROUP)
 
 # MongoDB information
-DATABASE_URL = environ.get('DATABASE_URL', "") #mongo db url
+DATABASE_URL = environ.get('DATABASE_URL', "mongodb+srv://RP44:RZoUNws5PGcZroT6@rajps33.a0tsf.mongodb.net/?retryWrites=true&w=majority&appName=Rajps33") #mongo db url
 if len(DATABASE_URL) == 0:
     print('Error - DATABASE_URL is missing, exiting now')
     exit()
@@ -76,11 +76,11 @@ DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Files')
 
 # Links
-SUPPORT_LINK = environ.get('SUPPORT_LINK', 'https://t.me/Rkbotzsupport')
-UPDATES_LINK = environ.get('UPDATES_LINK', 'https://t.me/Rkbotz')
-FILMS_LINK = environ.get('FILMS_LINK', 'https://t.me/RkMovie_group')
-TUTORIAL = environ.get("TUTORIAL", "https://t.me/Rkbotz")
-VERIFY_TUTORIAL = environ.get("VERIFY_TUTORIAL", "https://t.me/Rkbotz")
+SUPPORT_LINK = environ.get('SUPPORT_LINK', 'https://t.me/Netfilix_movie_shaport')
+UPDATES_LINK = environ.get('UPDATES_LINK', 'https://t.me/+Ie4mNf6lL5RjYjM1')
+FILMS_LINK = environ.get('FILMS_LINK', 'https://t.me/n_flixmovie')
+TUTORIAL = environ.get("TUTORIAL", "https://t.me/APSmo/7")
+VERIFY_TUTORIAL = environ.get("VERIFY_TUTORIAL", "https://t.me/APSmo/7")
 
 # Bot settings
 DELETE_TIME = int(environ.get('DELETE_TIME', 3600)) # Add time in seconds 
@@ -89,8 +89,8 @@ MAX_BTN = int(environ.get('MAX_BTN', 10)) #don't change anything in Language
 LANGUAGES = [language.lower() for language in environ.get('LANGUAGES', 'english hindi telugu tamil kannada malayalam').split()]
 IMDB_TEMPLATE = environ.get("IMDB_TEMPLATE", script.IMDB_TEMPLATE)
 FILE_CAPTION = environ.get("FILE_CAPTION", script.FILE_CAPTION)
-SHORTLINK_URL = environ.get("SHORTLINK_URL", "onepagelink.in")
-SHORTLINK_API = environ.get("SHORTLINK_API", "f646357aa129cfbd7eb59bcba428096ab54ca950")
+SHORTLINK_URL = environ.get("SHORTLINK_URL", "shortxlinks.com")
+SHORTLINK_API = environ.get("SHORTLINK_API", "fa2a0768fc8d2a51b22e46293634a52670a73c7a")
 VERIFY_EXPIRE = int(environ.get('VERIFY_EXPIRE', 86400)) # Add time in seconds
 WELCOME_TEXT = environ.get("WELCOME_TEXT", script.WELCOME_TEXT)
 INDEX_EXTENSIONS = [extensions.lower() for extensions in environ.get('INDEX_EXTENSIONS', 'mp4 mkv').split()]
@@ -99,12 +99,12 @@ STICKERS_IDS = (
 ).split()
 
 # boolean settings 
-GROUP_FSUB = is_enabled('GROUP_FSUB', False) 
+GROUP_FSUB = is_enabled('GROUP_FSUB', True) 
 PM_SEARCH = is_enabled('PM_SEARCH', True) #switch True or False for searching results in bot pm😃
 IS_VERIFY = is_enabled('IS_VERIFY', False)
 AUTO_DELETE = is_enabled('AUTO_DELETE', False)
 WELCOME = is_enabled('WELCOME', False)
-PROTECT_CONTENT = is_enabled('PROTECT_CONTENT', False)
+PROTECT_CONTENT = is_enabled('PROTECT_CONTENT', True)
 LONG_IMDB_DESCRIPTION = is_enabled("LONG_IMDB_DESCRIPTION", False)
 LINK_MODE = is_enabled("LINK_MODE", True)
 AUTO_FILTER = is_enabled('AUTO_FILTER', True)
@@ -113,17 +113,17 @@ SPELL_CHECK = is_enabled("SPELL_CHECK", True)
 SHORTLINK = is_enabled('SHORTLINK', False)
 
 
-PAYMENT_QR = environ.get('PAYMENT_QR', 'http://graph.org/file/cacbbea472e5a48ce0d64.jpg') #telegraph link of your QR code 
-UPI_ID = environ.get('UPI_ID', 'Rishikesh-sharma09@axl') # Add your upi id here
+PAYMENT_QR = environ.get('PAYMENT_QR', 'https://i.postimg.cc/NFbZ4r7L/Google-Pay-QR-2.png') #telegraph link of your QR code 
+UPI_ID = environ.get('UPI_ID', 'singhayush88805@okaxis') # Add your upi id here
 # for stream
 IS_STREAM = is_enabled('IS_STREAM', True) #true if you want stream feature active in your bot
-BIN_CHANNEL = environ.get("BIN_CHANNEL", "") #if is_stream = true then add a channel id ex: -10026393639
+BIN_CHANNEL = environ.get("BIN_CHANNEL", "-1002237538640") #if is_stream = true then add a channel id ex: -10026393639
 if len(BIN_CHANNEL) == 0:
     print('Error - BIN_CHANNEL is missing, exiting now')
     exit()
 else:
     BIN_CHANNEL = int(BIN_CHANNEL)
-URL = environ.get("URL", "") #if heroku then paste the app link here ex: https://heroku......./
+URL = environ.get("URL", "https://t.me/+kP4LSVcocBVhZjc1") #if heroku then paste the app link here ex: https://heroku......./
 if len(URL) == 0:
     print('Error - URL is missing, exiting now')
     exit()
