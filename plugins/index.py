@@ -29,7 +29,7 @@ async def index_files(bot, query):
         temp.CANCEL = True
         await query.message.edit("Trying to cancel Indexing...")
 
-@Client.on_message((filters.forwarded | (filters.regex("(https://)?(t\.me/|telegram\.me/|telegram\.dog/)(c/)?(\d+|[a-zA-Z_0-9]+)/(\d+)$")) & filters.text ) & filters.private & filters.incoming)
+@Client.on_message((filters.forwarded | (filters.regex("(https://)?(t\.me/|telegram\.me/|telegram\.dog/)(c/)?(\d+|[a-zA-Z_0-9]+)/(\d+)$")) & filters.text) & filters.private & filters.incoming)
 async def send_for_index(bot, message):
     if message.text:
         regex = re.compile("(https://)?(t\.me/|telegram\.me/|telegram\.dog/)(c/)?(\d+|[a-zA-Z_0-9]+)/(\d+)$")
@@ -39,7 +39,7 @@ async def send_for_index(bot, message):
         chat_id = match.group(4)
         last_msg_id = int(match.group(5))
         if chat_id.isnumeric():
-            chat_id  = int(("-100" + chat_id))
+            chat_id = int(("-100" + chat_id))
     elif message.forward_from_chat.type == enums.ChatType.CHANNEL:
         last_msg_id = message.forward_from_message_id
         chat_id = message.forward_from_chat.username or message.forward_from_chat.id
@@ -54,10 +54,12 @@ async def send_for_index(bot, message):
     except Exception as e:
         logger.exception(e)
         return await message.reply(f'Errors - {e}')
+    
     try:
         k = await bot.get_messages(chat_id, last_msg_id)
     except:
         return await message.reply('Make Sure That I am an Admin In The Channel, if the channel is private')
+    
     if k.empty:
         return await message.reply('This may be group and I am not an admin of the group.')
 
@@ -70,6 +72,7 @@ async def send_for_index(bot, message):
 @Client.on_message(filters.private & filters.reply)
 async def forceskip(client, message):
     reply_message = message.reply_to_message
+    msg = None  # Initialize msg to avoid UnboundLocalError
     if (reply_message.reply_markup) and isinstance(reply_message.reply_markup, ForceReply):
         skip_msg = message
         try:
@@ -117,7 +120,7 @@ async def index_files_to_db(lst_msg_id, chat, msg, bot, skip):
     no_media = 0
     unsupported = 0
     current = skip
-    
+
     async with lock:
         try:
             async for message in bot.iter_messages(chat, lst_msg_id, skip):
@@ -160,4 +163,4 @@ async def index_files_to_db(lst_msg_id, chat, msg, bot, skip):
         except Exception as e:
             await msg.reply(f'Index canceled due to Error - {e}')
         else:
-            await msg.edit(f'Successfully saved <code>{total_files}</code> to Database!\nCompleted in {time_taken}\n\nDuplicate Files Skipped: <code>{duplicate}</code>\nDeleted Messages Skipped: <code>{deleted}</code>\nNon-Media messages skipped: <code>{no_media + unsupported}</code>\nUnsupported Media: <code>{unsupported}</code>\nErrors Occurred: <code>{errors}</code>')
+            await msg.edit(f'Successfully saved <code>{total_files}</code> to Database!\nCompleted in {get_readable_time(time.time() - start_time)}\n\nDuplicate Files Skipped: <code>{duplicate}</code>\nDeleted Messages Skipped: <code>{deleted}</code>\nNon-Media messages skipped: <code>{no_media + unsupported}</code>\nUnsupported Media: <code>{unsupported}</code>\nErrors Occurred: <code>{errors}</code>')
